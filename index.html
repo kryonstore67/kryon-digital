@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRYON DIGITAL - Soluções Digitais & Inteligência</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #090514;
+            --bg-card: #130a28;
+            --bg-card-hover: #1c0f3b;
+            --purple-main: #7c3aed;
+            --purple-light: #a78bfa;
+            --purple-glow: rgba(124, 58, 237, 0.35);
+            --gold-main: #f59e0b;
+            --gold-light: #fbbf24;
+            --gold-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #d97706 100%);
+            --purple-gradient: linear-gradient(135deg, #6d28d9 0%, #7c3aed 50%, #4c1d95 100%);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-purple: rgba(167, 139, 250, 0.15);
+            --border-gold: rgba(245, 158, 11, 0.3);
+            --whatsapp-color: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 60%, rgba(245, 158, 11, 0.08) 0%, transparent 40%);
+        }
+
+        .top-banner {
+            background: var(--gold-gradient);
+            color: #000;
+            text-align: center;
+            padding: 8px 15px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        header {
+            background: rgba(19, 10, 40, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-purple);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-nav {
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-whatsapp {
+            background: rgba(37, 211, 102, 0.15);
+            color: var(--whatsapp-color);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background: var(--whatsapp-color);
+            color: #000;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .hero {
+            padding: 60px 20px 40px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badge-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        .products-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 35px;
+            color: #fff;
+        }
+
+        .section-title span {
+            color: var(--purple-light);
+        }
+
+        .grid-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .card-product {
+            background: var(--bg-card);
+            border: 1px solid var(--border-purple);
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-product:hover {
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+            border-color: var(--gold-main);
+            box-shadow: 0 10px 30px var(--purple-glow);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--purple-gradient);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .card-badge.gold {
+            background: var(--gold-gradient);
+            color: #000;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid var(--border-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-light);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .card-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 15px;
+        }
+
+        .card-features li {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .card-features li i {
+            color: var(--gold-main);
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .price-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .price-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold-light);
+        }
+
+        .btn-buy {
+            background: var(--gold-gradient);
+            color: #000;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-buy:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+        }
+
+        /* MODAL DE SELEÇÃO DE BANCOS */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(9, 5, 20, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 85vh;
+            padding: 30px 25px;
+            position: relative;
+            box-shadow: 0 15px 40px var(--purple-glow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .modal-header p {
+            color: var(--purple-light);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .modal-options::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-options::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .modal-options::-webkit-scrollbar-thumb {
+            background: var(--purple-main);
+            border-radius: 10px;
+        }
+
+        .bank-option-btn {
+            background: var(--bg-card-hover);
+            border: 1px solid var(--border-purple);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .bank-option-btn:hover {
+            border-color: var(--gold-main);
+            background: rgba(124, 58, 237, 0.2);
+            transform: translateX(5px);
+        }
+
+        .bank-option-btn i {
+            color: var(--gold-light);
+        }
+
+        .support-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .support-box {
+            background: linear-gradient(135deg, rgba(19, 10, 40, 0.9) 0%, rgba(28, 15, 59, 0.9) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-box h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .support-box p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+
+        .support-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-support-lg {
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-group-wa {
+            background: var(--whatsapp-color);
+            color: #000;
+        }
+
+        .btn-group-wa:hover {
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-direct-wa {
+            background: rgba(124, 58, 237, 0.2);
+            color: #fff;
+            border: 1px solid var(--purple-light);
+        }
+
+        .btn-direct-wa:hover {
+            background: var(--purple-main);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-purple);
+            background: rgba(9, 5, 20, 0.95);
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        footer p span {
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .grid-products { grid-template-columns: 1fr; }
+            .card-footer { flex-direction: column; align-items: stretch; }
+            .btn-buy { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <div class="top-banner">
+        <i class="fa-solid fa-bolt"></i> ENTREGA AUTOMÁTICA IMEDIATA APÓS O PAGAMENTO VIA PIX OU CARTÃO
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-crown" style="color: var(--gold-main);"></i> KRYON<span>.DIGITAL</span>
+            </a>
+            <div class="nav-buttons">
+                <a href="https://chat.whatsapp.com/CWloj9IwwL264j5LsOuEMf" target="_blank" class="btn-nav btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Grupo VIP
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="badge-hero">
+            <i class="fa-solid fa-star"></i> Soluções & Ferramentas Digitais Exclusivas
+        </div>
+        <h1>Eleve o Seu Nível no Mercado com a <span>KRYON DIGITAL</span></h1>
+        <p>Acesso imediato às melhores ferramentas, aplicativos, geradores e inteligência artificial do mercado. Conteúdo 100% atualizado e confiável.</p>
+    </section>
+
+    <section class="products-section">
+        <h2 class="section-title">Nossas <span>Ferramentas & Soluções</span></h2>
+
+        <div class="grid-products">
+
+            <!-- Card 1: Apps Bancos Android (R$ 14,95) -->
+            <div class="card-product">
+                <span class="card-badge gold">Mais Vendido</span>
+                <div class="card-icon"><i class="fa-brands fa-android"></i></div>
+                <h3 class="card-title">Apps de Bancos Android</h3>
+                <p class="card-description">Bancos Android de qualidade editável e idênticos aos originais fazendo todas funções por um preço acessível totalmente confiável! 💜</p>
+                <ul class="card-features">
+                    <li><i class="fa-solid fa-check"></i> Compatível com Android</li>
+                    <li><i class="fa-solid fa-check"></i> Interface 100% idêntica</li>
+                    <li><i class="fa-solid fa-check"></i> Edição simples e rápida</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-box">
+                        <span class="price-label">Valor</span>
+                        <span class="price-value">R$ 14,95</span>
+                    </div>
+                    <button class="btn-buy" onclick="openBankModal('Apps Android', 1495)">
+                        Escolher Banco <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 2: Apps Bancos iOS (R$ 21,00) -->
+            <div class="card-product">
+                <span class="card-badge">Exclusivo</span>
+                <div class="card-icon"><i class="fa-brands fa-apple"></i></div>
+                <h3 class="card-title">Apps de Bancos iOS</h3>
+                <p class="card-description">Bancos iOS de qualidade editável e idênticos aos originais fazendo todas funções por um preço acessível totalmente confiável! 💜</p>
+                <ul class="card-features">
+                    <li><i class="fa-solid fa-check"></i> Otimizado para iPhone / iOS</li>
+                    <li><i class="fa-solid fa-check"></i> Animações e menus idênticos</li>
+                    <li><i class="fa-solid fa-check"></i> Prático e responsivo</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-box">
+                        <span class="price-label">Valor</span>
+                        <span class="price-value">R$ 21,00</span>
+                    </div>
+                    <button class="btn-buy" onclick="openBankModal('Apps iOS', 2100)">
+                        Escolher Banco <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 3: Aplicativo ASD (R$ 27,00) -->
+            <div class="card-product">
+                <span class="card-badge gold">VIP</span>
+                <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
+                <h3 class="card-title">Aplicativo ASD</h3>
+                <p class="card-description">Tenha acesso a módulos exclusivos e atualizações em tempo real, eleve o nível do seu game aprendendo a fazer tráfego pago, criar seus próprios produtos, e muito mais.</p>
+                <ul class="card-features">
+                    <li><i class="fa-solid fa-check"></i> Módulos exclusivos e práticos</li>
+                    <li><i class="fa-solid fa-check"></i> Aulas de Tráfego Pago & Criação</li>
+                    <li><i class="fa-solid fa-check"></i> Atualizações em tempo real</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-box">
+                        <span class="price-label">Valor</span>
+                        <span class="price-value">R$ 27,00</span>
+                    </div>
+                    <button class="btn-buy" onclick="iniciarCheckoutDireto('Aplicativo ASD', 2700, this)">
+                        Comprar Agora <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 4: Gerador de Notificações (R$ 11,80) -->
+            <div class="card-product">
+                <div class="card-icon"><i class="fa-solid fa-bell"></i></div>
+                <h3 class="card-title">Gerador de Notificações</h3>
+                <p class="card-description">Gerador de notificações, gerar notificações de pix, vendas e tudo mais baratinho e funcional ❗️</p>
+                <ul class="card-features">
+                    <li><i class="fa-solid fa-check"></i> Suporte Android & iOS</li>
+                    <li><i class="fa-solid fa-check"></i> Alertas de Pix e Vendas</li>
+                    <li><i class="fa-solid fa-check"></i> Configuração imediata</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-box">
+                        <span class="price-label">Valor</span>
+                        <span class="price-value">R$ 11,80</span>
+                    </div>
+                    <button class="btn-buy" onclick="iniciarCheckoutDireto('Gerador de Notificações', 1180, this)">
+                        Comprar Agora <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 5: I.A Especialista em Marketing (R$ 9,62) -->
+            <div class="card-product">
+                <span class="card-badge gold">Super Útil</span>
+                <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+                <h3 class="card-title">I.A que Faz Tudo pra Você 🤖</h3>
+                <p class="card-description">Receba uma I.A Especialista em Marketing, tráfego pago, copy, VSL, estrutura, e muito mais.</p>
+                <ul class="card-features">
+                    <li><i class="fa-solid fa-check"></i> Criação de Copy e VSL</li>
+                    <li><i class="fa-solid fa-check"></i> Estratégias de Tráfego Pago</li>
+                    <li><i class="fa-solid fa-check"></i> Suporte inteligente 24/7</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-box">
+                        <span class="price-label">Valor</span>
+                        <span class="price-value">R$ 9,62</span>
+                    </div>
+                    <button class="btn-buy" onclick="iniciarCheckoutDireto('IA Especialista em Marketing', 962, this)">
+                        Comprar Agora <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MODAL DE SELEÇÃO DE BANCOS -->
+    <div class="modal-overlay" id="bankModal">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeBankModal()">&times;</button>
+            <div class="modal-header">
+                <h3>Selecione a Opção</h3>
+                <p id="modalSubtitle">Produto Selecionado</p>
+            </div>
+            <div class="modal-options">
+                <div class="bank-option-btn" onclick="selecionarBancoEComprar('Kiwify')"><span>Kiwify</span><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="bank-option-btn" onclick="selecionarBancoEComprar('Mercado Pago')"><span>Mercado Pago</span><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="bank-option-btn" onclick="selecionarBancoEComprar('Inter')"><span>Inter</span><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="bank-option-btn" onclick="selecionarBancoEComprar('Santander')"><span>Santander</span><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="bank-option-btn" onclick="selecionarBancoEComprar('Kirvano')"><span>Kirvano</span><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="bank-option-btn" onclick="selecionarBancoEComprar('Nubank')"><span>Nubank</span><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="bank-option-btn" onclick="selecionarBancoEComprar('Itaú')"><span>Itaú</span><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="bank-option-btn" onclick="selecionarBancoEComprar('Caixa')"><span>Caixa</span><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="bank-option-btn" onclick="selecionarBancoEComprar('C6 Bank')"><span>C6 Bank</span><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="bank-option-btn" onclick="selecionarBancoEComprar('Banco Pan')"><span>Banco Pan</span><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="support-section">
+        <div class="support-box">
+            <h2>Precisa de Ajuda ou Quer Entrar na Comunidade?</h2>
+            <p>Junte-se ao nosso grupo oficial no WhatsApp para novidades ou entre em contacto direto com o nosso suporte humanizado.</p>
+            <div class="support-cta-group">
+                <a href="https://chat.whatsapp.com/CWloj9IwwL264j5LsOuEMf" target="_blank" class="btn-support-lg btn-group-wa">
+                    <i class="fa-brands fa-whatsapp"></i> Entrar no Grupo do WhatsApp
+                </a>
+                <a href="https://wa.me/5592992755664" target="_blank" class="btn-support-lg btn-direct-wa">
+                    <i class="fa-solid fa-headset"></i> Suporte: (92) 99275-5664
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <span>KRYON DIGITAL</span>. Todos os direitos reservados. Vendas e Investimentos Digitais.</p>
+    </footer>
+
+    <script>
+        let produtoAtual = '';
+        let valorAtual = 0;
+
+        function openBankModal(nomeProduto, valorEmCentavos) {
+            produtoAtual = nomeProduto;
+            valorAtual = valorEmCentavos;
+            document.getElementById('modalSubtitle').innerText = nomeProduto;
+            document.getElementById('bankModal').classList.add('active');
+        }
+
+        function closeBankModal() {
+            document.getElementById('bankModal').classList.remove('active');
+        }
+
+        async function selecionarBancoEComprar(banco) {
+            const nomeFinal = `${produtoAtual} - ${banco}`;
+            closeBankModal();
+            await criarPagamentoGladepay(nomeFinal, valorAtual);
+        }
+
+        async function iniciarCheckoutDireto(nomeProduto, valorEmCentavos, elementoBtn) {
+            await criarPagamentoGladepay(nomeProduto, valorEmCentavos, elementoBtn);
+        }
+
+        async function criarPagamentoGladepay(descricao, amountCents, elementoBtn = null) {
+            try {
+                if (elementoBtn) {
+                    elementoBtn.innerText = "A carregar...";
+                    elementoBtn.disabled = true;
+                }
+
+                const resposta = await fetch('/api/pagar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amountCents: amountCents,
+                        reference: descricao + '-' + Date.now()
+                    })
+                });
+
+                const dados = await resposta.json();
+
+                if (dados.url || dados.paymentUrl || dados.checkoutUrl) {
+                    const linkPagamento = dados.url || dados.paymentUrl || dados.checkoutUrl;
+                    window.location.href = linkPagamento;
+                } else if (dados.pixCopyPaste || dados.qrCode) {
+                    // Trata retornos diretos de Pix caso a API devolva o código diretamente
+                    alert("Cobrança criada com sucesso! Redirecionando...");
+                    window.location.href = dados.paymentUrl || dados.url || '#';
+                } else {
+                    alert("Erro ao gerar pagamento na Gladepay. Verifique as configurações na Vercel.");
+                    console.error(dados);
+                    if (elementoBtn) {
+                        elementoBtn.innerText = "Comprar Agora";
+                        elementoBtn.disabled = false;
+                    }
+                }
+            } catch (erro) {
+                alert("Erro ao conectar ao servidor da API.");
+                console.error(erro);
+                if (elementoBtn) {
+                    elementoBtn.innerText = "Comprar Agora";
+                    elementoBtn.disabled = false;
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
