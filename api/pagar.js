@@ -5,17 +5,15 @@ export default async function handler(req, res) {
 
     try {
         const { amountCents, reference } = req.body;
-
         const apiKey = process.env.GLADEPAY_KEY;
 
         if (!apiKey) {
             return res.status(500).json({ 
-                error: 'GLADEPAY_KEY não encontrada nas Variáveis da Vercel.' 
+                error: 'Chave GLADEPAY_KEY não configurada na Vercel.' 
             });
         }
 
-        // Tenta enviar a requisição para a Gladepay
-        const respostaGladepay = await fetch('https://app.gladepay.com.br/v1/deposito', {
+        const response = await fetch('https://app.gladepay.com.br/v1/deposito', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
@@ -23,27 +21,26 @@ export default async function handler(req, res) {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                amountCents: Number(amountCents),
+                amountCents: Number(amountCents) || 1495,
                 reference: reference || ('REF-' + Date.now())
             })
         });
 
-        const dados = await respostaGladepay.json();
+        const data = await response.json();
 
-        if (!respostaGladepay.ok) {
-            return res.status(respostaGladepay.status).json({ 
-                error: 'Erro na API da Gladepay', 
-                detalhes: dados 
+        if (!response.ok) {
+            return res.status(response.status).json({
+                error: 'A Gladepay recusou a solicitação.',
+                detalhes: data
             });
         }
 
-        return res.status(200).json(dados);
+        return res.status(200).json(data);
 
-    } catch (erro) {
+    } catch (err) {
         return res.status(500).json({ 
             error: 'Erro interno no servidor Vercel', 
-            mensagem: erro.message 
+            mensagem: err.message 
         });
     }
 }
-
